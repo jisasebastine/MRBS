@@ -7,6 +7,10 @@ namespace youbefit.Services
 {
     public class EncryptService : IEncryptService
     {
+        public EncryptService()
+        {
+        }
+
         public string hashPassword(string password)
         {
             string hashpass = "";

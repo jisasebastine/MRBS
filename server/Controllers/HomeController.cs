@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using youbefit.Models;
 using youbefit.Services;
 
@@ -14,12 +15,6 @@ namespace youbefit.Controllers
     [Route("[controller]")]
     public class HomeController : Controller
     {
-        private IPostService _postService;
-
-        public HomeController(IPostService postService)
-        {
-            _postService = postService;
-        }
         [HttpGet("index")]
         public IActionResult Index()
         {
@@ -29,15 +24,9 @@ namespace youbefit.Controllers
         [HttpGet("about")]
         public IActionResult About()
         {
-            var blog = _postService.CreatePost();
-            IList<string> url_list = new List<string>();
-            foreach (var item in blog)
-            {
-               url_list.Add(item.Url.ToString());
-            }
-            ViewData["Message"] = url_list;
+            ViewData["Message"] = "You are in About page";
 
-            return Ok(new {url_list = url_list});
+            return View();
         }
 
         [HttpGet("contact")]

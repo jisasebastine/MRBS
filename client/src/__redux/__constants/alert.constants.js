@@ -1,0 +1,7 @@
+export const alertConstants = {
+    SUCCESS: 'ALERT_SUCCESS',
+    ERROR: 'ALERT_ERROR',
+    CLEAR: 'ALERT_CLEAR',
+    SHOW_MODAL_ACCOUNT: "SHOW_MODAL_ACCOUNT",
+    SHOW_MODAL_USER: "SHOW_MODAL_USER"
+};

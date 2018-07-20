@@ -1,0 +1,57 @@
+.navbar .navelement button{    
+    border: none;
+    background-color: rgb(8, 76, 85);
+    margin-bottom: 8px;
+}
+.navbar .navelement .glyphicon.glyphicon-log-out{
+    margin: 6px 16px 14px 16px;
+}
+.navbar {    
+    background-color: rgb(8, 76, 85);
+    font-size: 14px;
+}
+.navbar ul{
+    list-style-type: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar .navelement .glyphicon{
+    color: white;
+    text-align: center;
+    margin: 14px 16px;
+    text-decoration: none;
+    height: max-content;
+}
+
+/* Change the link color to #111 (black) on hover */
+.navbar .navelement :hover {
+    color: black;    
+    background-color: rgb(8, 76, 85);
+}
+
+.react-datetime-picker {
+    display: inline-block;
+    margin: 14px;
+}
+.rooms ul {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.rooms li {
+    text-align: left;
+}
+
+.rooms a {
+    color: black;
+    text-decoration: none;
+}

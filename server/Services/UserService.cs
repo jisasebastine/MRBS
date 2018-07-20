@@ -11,33 +11,25 @@ namespace youbefit.Services
     public class UserService : IUserService
     {
         private readonly AppDbContext _appDbContext;
-        private readonly IEncryptService _encodeService;
 
-        public UserService(AppDbContext appDbContext, IEncryptService encodeService)
+        public UserService(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-            _encodeService = encodeService;
         }
-
-        public Blog IsBlogValid(string url)
-        {
-            var blogs = _appDbContext.Blog.Where(b => b.Url == url).SingleOrDefault();
-            return blogs;
-        }
-
-        public void GetUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public User SignUp(string username, string password, string email)
+        
+        public User SignUp(string username, string password, string email="")
         {
             var user = _appDbContext.User.Where(u => u.Username == username).SingleOrDefault();
             if(user != null)
             {
                 return null;
             }
-            user = new User(username, password, email);
+            user = new User
+            {
+                Username = username,
+                Password = password,
+                Email = email
+            };
             _appDbContext.User.Add(user);
             _appDbContext.SaveChanges();
             return user;
@@ -46,6 +38,12 @@ namespace youbefit.Services
         public User Login(string username, string password)
         {
             return _appDbContext.User.Where(u => u.Username == username && u.Password == password).SingleOrDefault();
+        }
+
+        public User GetUserById(string userid)
+        {
+            var id = Convert.ToInt32(userid);
+            return _appDbContext.User.Where(u => u.Userid == id).SingleOrDefault();
         }
     }
 }

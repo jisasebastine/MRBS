@@ -5,16 +5,16 @@ namespace youbefit.Models
 {
     public partial class User
     {
+        public User()
+        {
+            Booking = new HashSet<Booking>();
+        }
+
         public int Userid { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public User(string username, string password, string email = "")
-        {
-            Username = username;
-            Password = password;
-            Email = email;
-        }              
+        public ICollection<Booking> Booking { get; set; }
     }
 }

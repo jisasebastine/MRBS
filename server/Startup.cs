@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,34 +29,25 @@ namespace youbefit
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddMvc();
+            services.AddCors();
+            
             // configure db context
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<AppDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             // configure DI for application services
-            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IMeetingRoomService, MeetingRoomService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEncryptService, EncryptService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseBrowserLink();
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //}
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            // global cors policy
+            app.UseStaticFiles();
+            app.UseDeveloperExceptionPage();
+            // to serve up index.html
             app.UseCors(corsPolicy => corsPolicy
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
