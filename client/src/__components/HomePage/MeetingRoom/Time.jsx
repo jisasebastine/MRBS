@@ -5,7 +5,8 @@ export class Time extends React.Component {
     constructor(){
         super();
         this.state = {
-            time: ''
+            time_val: '',
+            date_val:''
         }
         this.componentWillMount = this.componentWillMount.bind(this);
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
@@ -26,14 +27,26 @@ export class Time extends React.Component {
         var localTime = new Date(time);
         var offset = new Date().getTimezoneOffset();
         localTime.setMinutes(localTime.getMinutes() - offset);
-        this.setState({'time': localTime.toLocaleString()});    
+        this.setState({
+            'time_val': localTime.toLocaleString().split(',')[1],
+            'date_val': localTime.toLocaleDateString()
+        });    
     }
 
     render(){
-        return(
-            <span>
-                {this.state.time}
-            </span>
-        );
+        if(this.props.type === 'time') {
+            return(
+                <span>
+                    {this.state.time_val}
+                </span>
+            );
+        }
+        else {
+            return(
+                <span>
+                    {this.state.date_val}
+                </span>
+            );
+        }
     }
 }

@@ -1,0 +1,19 @@
+.roomtoroom {
+    display: inline-flex;
+}
+.leftpanel {
+    margin: 15px;
+}
+.rightpanel {
+    min-width: auto;
+    margin: 15px;
+    padding: 25px;
+    /* width: 90%; */
+    border: 1px solid rgb(8, 76, 85);
+    border-radius: 4px;
+    box-shadow: rgb(8, 76, 85);
+}
+.closebutton {
+    float: right;
+    color: black;
+}

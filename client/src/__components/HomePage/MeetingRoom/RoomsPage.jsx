@@ -2,13 +2,10 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 
-import '../../../css/rooms.css';
-import { NavBar } from '../NavBar';
+// import '../../../css/rooms.css';
 import { BookSlot } from './BookSlot';
-import { roomService } from '../../../__services';
-import { Z_ASCII } from 'zlib';
+import { roomService, alertService } from '../../../__services';
 
 class RoomsPage extends React.Component {
     constructor() {
@@ -21,6 +18,7 @@ class RoomsPage extends React.Component {
 
         this.addRoom = this.addRoom.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.loadEachRoom = this.loadEachRoom.bind(this);
         this.checkAvailability = this.checkAvailability.bind(this);
         this.componentWillMount = this.componentWillMount.bind(this);
     }
@@ -50,12 +48,19 @@ class RoomsPage extends React.Component {
         this.props.CheckAvailability(this.props.room.startTime, this.props.room.endTime);
     }
 
+    loadEachRoom(index, meetingRoomId, e) {
+        // loads the component EachRoom
+        console.log(index, meetingRoomId);
+        this.props.GoToRoom(meetingRoomId);
+        this.props.GetBooking(meetingRoomId);
+        this.props.LoadEachRoom(true);
+    }
+
     render() {
         const { room } = this.props;
         const green = 'rgb(62, 161, 84)';
         return(
             <div>
-                <NavBar />
                 <form onSubmit={this.addRoom} >
                     <div><Button onClick={this.handleClick}> Add Room </Button></div>
                     <div style={{'visibility': this.state.addroom, 'padding':'5px'}}>
@@ -64,14 +69,14 @@ class RoomsPage extends React.Component {
                 </form>
                 <div className='rooms'>
                     <h1>Meeting Rooms</h1>
-                    <ul>
+                    <ul className="list">
                     {room.rooms.sort((a,b) => a.meetingRoomName > b.meetingRoomName)
                         .map((meetingRoom, index) =>
-                            <Link key={index} to={'/rooms/room?index='+index+'&id='+meetingRoom.meetingRoomId}>   
-                                <li className='form-control' style={{'backgroundColor': meetingRoom.vacant? green: 'white'}}>   
-                                    <span>  {meetingRoom.meetingRoomName} </span>
+                            <button key={index} onClick={this.loadEachRoom.bind(this, index, meetingRoom.meetingRoomId)}>   
+                                <li style={{'backgroundColor': meetingRoom.vacant? green: 'rgb(8, 76, 85)'}}>   
+                                    <b>  {meetingRoom.meetingRoomName} </b>
                                 </li>                                
-                            </Link> 
+                            </button> 
                     )}
                     </ul>
                 </div>
@@ -92,7 +97,7 @@ function mapStateToProps(state) {
     };
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...roomService}, dispatch);
+    return bindActionCreators({...roomService, ...alertService}, dispatch);
 }
 const connectedRoomsPage = connect(mapStateToProps, mapDispatchToProps)(RoomsPage);
 export { connectedRoomsPage as RoomsPage }; 

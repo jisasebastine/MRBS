@@ -1,70 +1,34 @@
-.navbar .navelement button{    
-    border: none;
-    background-color: rgb(8, 76, 85);
-    margin-bottom: 8px;
-}
-.navbar .navelement .glyphicon.glyphicon-log-out{
-    margin: 6px 16px 14px 16px;
-}
-.navbar {    
-    background-color: rgb(8, 76, 85);
-    font-size: 14px;
-}
-.navbar ul{
-    list-style-type: none;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.navbar .navelement {
-    float: left;  
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;     
-    color: black;
-    text-decoration: none;
-    text-align: center;
-    background-color: transparent;
-    border: none;
-}
-.navbar .navelement .glyphicon{
-    color: white;
-    text-align: center;
-    margin: 14px 16px;
-    text-decoration: none;
-    height: max-content;
-}
-
-/* Change the link color to #111 (black) on hover */
-.navbar .navelement :hover {
-    color: black;    
-    background-color: rgb(8, 76, 85);
-}
-
 .react-datetime-picker {
     display: inline-block;
     margin: 14px;
 }
 .rooms ul {
     list-style-type: none;
-    display: inline-block;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: transparent;
+    width: 100%;
+    line-height: 50px;
+    font-size: 14px;
+    font-family: 'serif';
+    display: grid;
 }
 
-.rooms .list button {
-    color: black;
-    text-decoration: none;
-    text-align: center;
-    background-color: transparent;
-    border: none;
+.rooms li {
+    margin: 5px 0 5px 0;
     width: 100%;
+    border-radius: 4px;
+}
+
+.rooms .list b {
+    font-family: sans-serif;
 }
 .rooms a {
     color: black;
     text-decoration: none;
+}
+button {
+    background-color: transparent;
+    color: white;
 }

@@ -1,23 +1,54 @@
 import React from 'react';
 import { RoomsPage } from './RoomsPage';
-import { EachRoom } from './EachRoom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export class Youbefit extends React.Component {
+import { EachRoom } from './EachRoom';
+import { Bar } from '../Bar';
+
+import '../../../css';
+import { alertService } from '../../../__services';
+
+class Youbefit extends React.Component {
     constructor() {
         super();
-        this.state = {
-            eachRoomVisible: false
-        }
+        this.closeDiv = this.closeDiv.bind(this);
     }
+
+    closeDiv() {
+        this.props.LoadEachRoom(false);
+    }
+
     render() {
         return (
         <div>
-            <RoomsPage />
-            {this.state.eachRoomVisible && 
-                <EachRoom />
+            <div>
+            <Bar />
+            </div>
+            <div className='roomtoroom'>
+            <div className='leftpanel'><RoomsPage /></div>
+            {this.props.alert.loadeachroom && 
+                <div className='rightpanel'> 
+                <button className='closebutton' onClick={this.closeDiv}><div className='glyphicon glyphicon-remove'></div></button>
+                    <EachRoom />
+                </div>
             }
+            </div>
         </div>
     );
     }
 
 }
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({...alertService}, dispatch);
+}
+
+const connectedYoubefit = connect(mapStateToProps, mapDispatchToProps)(Youbefit);
+export { connectedYoubefit as Youbefit }; 

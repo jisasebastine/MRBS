@@ -1,0 +1,52 @@
+.bookinglist ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(8, 76, 85);
+    width: 100%;
+    line-height: 50px;
+    font-size: 16px;
+    font-family: 'serif';
+    display: grid;
+    color: white;
+}
+.bookinglist li {
+    margin: 5px 0 5px 0;
+    width: 100%;
+    min-width: max-content;
+    float: left;
+    width: 100%;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.booking ul {
+    border-radius: 4px;
+    font-family: 'serif';
+    color: white;
+    display: flex;
+}
+.booking li {
+    text-align: center;
+    float: left;
+    width: 16.66666%;
+    min-width: max-content;
+    display: block;
+    text-decoration: none;
+}
+.booking li .glyphicon {
+    width: 100%;
+    float: left;
+    padding: 0;
+    color: white;
+    font-family: Glyphicons Halflings;
+}
+.booking b {
+    padding: 0 10px 0 10px;
+    text-transform: capitalize;
+    display: block;
+    white-space: nowrap;
+    font-family: sans-serif;
+}

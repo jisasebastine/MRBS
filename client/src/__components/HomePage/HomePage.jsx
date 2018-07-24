@@ -1,7 +1,8 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 
-import { NavBar } from './NavBar';
+import { Bar } from './Bar';
+
 export class HomePage extends React.Component {
     constructor() {
         super();
@@ -16,7 +17,7 @@ export class HomePage extends React.Component {
         const profile = JSON.parse(localStorage.getItem('user'));
         return (
             <div>       
-                <NavBar />         
+                <Bar />         
                 <h1> Welcome { profile.username } </h1>
                 <img src={ profile.imageUrl } alt="sorry" />
                 <div>{ profile.email }</div>

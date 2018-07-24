@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Button } from 'react-bootstrap';
 
-import '../../../css/rooms.css';
-import { NavBar } from '../NavBar';
+import '../../../css/booking.css';
 import { roomService } from '../../../__services';
 import { BookSlot } from './BookSlot';
 import { Time } from './Time';
@@ -13,35 +12,16 @@ class EachRoom extends React.Component {
     constructor() {
         super();
         
-        this.componentWillMount = this.componentWillMount.bind(this);
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
         this.bookRoom = this.bookRoom.bind(this);
         this.cancelBooking = this.cancelBooking.bind(this);
     }
 
-    componentWillMount() {
-        if(window.location.search !== undefined)
-        {            
-            const { room } = this.props;
-            const index = window.location.search.split('&')[0].split('=')[1];
-            const id = window.location.search.split('&')[1].split('=')[1];
-            this.props.GoToRoom(id);
-            this.props.GetBooking(id);
-        }
-    }
-
     componentDidUpdate() {
+        const id = this.props.room.selected_room.meetingRoomId;
         setTimeout(() => { 
-            if(window.location.pathname.startsWith('/rooms/room'))   
-            {
-                if(window.location.search !== undefined)
-                {
-                    const id = window.location.search.split('&')[1].split('=')[1];   
-                    //get bookings
-                    this.props.GetBooking(id);
-                }
-            }
-        }, 7000);
+            this.props.GetBooking(id);
+        }, 1000);
     }
 
     bookRoom() {                  
@@ -63,30 +43,41 @@ class EachRoom extends React.Component {
     render() {
     const { room } = this.props;
         return (
-        <div>
-            <NavBar />
+        <div className="container">
             <div>
                 { room.selected_room !== undefined &&
                     <div>
                         <h3> { room.selected_room.meetingRoomName } </h3>
-                            <span>
-                                <div>
-                                    <Button onClick={this.bookRoom}>Book</Button>            
-                                    <BookSlot />
-                                </div>
-                            </span>
-                    {room.bookings !== undefined &&
-                        room.bookings.sort((a,b) => a.startTime < b.startTime)
-                        .map((booking, index) =>
-                            <div key={index}>                                   
-                                <li className='form-control'>   
-                                <b>{booking.userName}</b> booked this room from <b><Time  time = {booking.startTime} /></b> to <b><Time  time = {booking.endTime} /></b>
-                                <button onClick={this.cancelBooking.bind(this, index)} data-toggle="tooltip" data-placement="top" title="double click to cancel booking">
-                                <b className='glyphicon glyphicon-trash'></b> 
-                                </button>       
-                                </li>                        
-                            </div> 
-                    )}
+                        <span>
+                            <div>
+                                <Button onClick={this.bookRoom}>Book</Button>            
+                                <BookSlot />
+                            </div>
+                        </span>
+                        <div className='container'>
+                        <ul className="bookinglist">
+                            {room.bookings !== undefined &&
+                            room.bookings.sort((a,b) => a.startTime < b.startTime)
+                            .map((booking, index) =>
+                                <div key={index}>                                   
+                                    <li> 
+                                    <div className='booking'>  
+                                        <ul>
+                                        <li><b>{booking.userName}</b>  </li>
+                                        <li> <b>{<Time  time = {booking.startTime} type='date'/>}</b>  </li>
+                                        <li> <b><Time  time = {booking.startTime} type='time'/></b>  </li>
+                                        <li> <b>to</b> </li>
+                                        <li> <b><Time  time = {booking.endTime} type='time'/></b> </li>
+                                        <li> <button onClick={this.cancelBooking.bind(this, index)} data-toggle="tooltip" data-placement="top" title="click to cancel booking">
+                                        <b className='glyphicon glyphicon-trash'></b> 
+                                        </button> </li>  
+                                        </ul> 
+                                    </div>     
+                                    </li>                        
+                                </div> 
+                            )}
+                        </ul>
+                        </div>
                     </div>
                 }  
             </div>
