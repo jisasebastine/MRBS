@@ -101,7 +101,7 @@ namespace youbefit.Services
             // find bookings during given time
             // based on booking get the meeting rooms
             var meetingrooms = GetRooms();
-            var bookings = _appDbContext.Booking.Where(booking => (startDate >= booking.StartTime && startDate < booking.EndTime) || (endDate > booking.StartTime && endDate < booking.EndTime));
+            var bookings = _appDbContext.Booking.Where(booking => (startDate >= booking.StartTime && startDate < booking.EndTime) || (endDate > booking.StartTime && endDate <= booking.EndTime));
             //
             List<int> id_list = new List<int>();
             foreach (var booking in bookings)

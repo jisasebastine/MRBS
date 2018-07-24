@@ -10,6 +10,7 @@ import { SendResetEmail } from './__components/LoginPage/SendResetEmail';
 import { SignUp } from './__components//LoginPage/SignUp';
 import { RoomsPage } from './__components/HomePage/MeetingRoom/RoomsPage'; 
 import { EachRoom } from './__components/HomePage/MeetingRoom/EachRoom'; 
+import { Youbefit } from './__components/HomePage/MeetingRoom/Youbefit';
 
 class App extends Component {
   render() {
@@ -22,7 +23,8 @@ class App extends Component {
               <Route exact path="/login" component={ LoginPage } />    
               <PrivateRoute exact path="/" component={ HomePage } /> 
               <PrivateRoute exact path="/rooms" component={ RoomsPage } />    
-              <PrivateRoute exact path="/rooms/room" component={ EachRoom } />     
+              <PrivateRoute exact path="/rooms/room" component={ EachRoom } />  
+              <PrivateRoute exact path="/youbefit" component={ Youbefit } />     
           </div>
         </Router>
       </div>

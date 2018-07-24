@@ -18,10 +18,18 @@
     overflow: hidden;
 }
 
-.navbar li {
-    float: left;
+.navbar .navelement {
+    float: left;  
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;     
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    background-color: transparent;
+    border: none;
 }
-
 .navbar .navelement .glyphicon{
     color: white;
     text-align: center;
@@ -47,10 +55,15 @@
     padding: 0;
     overflow: hidden;
 }
-.rooms li {
-    text-align: left;
-}
 
+.rooms .list button {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}
 .rooms a {
     color: black;
     text-decoration: none;
