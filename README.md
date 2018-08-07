@@ -5,3 +5,4 @@ This is an asp.net core-2.0 web app built with React and Redux.
 The database is built with PostgreSQL utlising asp.net core EntityFramework libraries.
 
 The app lets you add/book a meeting room.
+Screencast link: https://www.screencast.com/t/LVv0dW9sE
