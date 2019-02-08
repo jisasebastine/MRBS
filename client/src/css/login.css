@@ -1,0 +1,45 @@
+@media all and (min-width: 300px) and (min-height: 300px) 
+{
+    .bodyBG {
+        width: auto;
+        min-height: 100vh;
+        padding: 3%;
+        background-size: cover;
+        background-image: url('./svg/youbefitlogo.svg');   
+        font-family: "Gotham SSm 4r",Calibri,Candara,"Helvetica Neue",Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        color:#404041;
+    }
+}
+
+@media all and (max-width: 300px) and (max-height: 300px) 
+{
+    .bodyBG {
+        width: auto;
+        min-height: 100vh;
+        padding: 3%;
+        background-color: black;
+        font-family: "Gotham SSm 4r",Calibri,Candara,"Helvetica Neue",Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        color:#404041;
+    }
+}
+
+button {
+    background-color:#0093c3; 
+    color: black;    
+    border: none;
+    margin: 0;
+}
+.form-control {
+    background-color: rgb(189, 240, 187);
+}
+.logoContainer {
+    width: auto;
+    padding: 15px;
+}
+.otheraction{
+    color:#97f09f;
+    background-color: rgb(0, 0, 0);
+}
+
