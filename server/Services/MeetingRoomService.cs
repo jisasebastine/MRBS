@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using youbefit.Models;
+using MRBS.Models;
 
-namespace youbefit.Services
+namespace MRBS.Services
 {
     public class MeetingRoomService : IMeetingRoomService
     {
@@ -43,7 +43,7 @@ namespace youbefit.Services
 
         public MeetingRoom BookRoom(string meetingRoomId, string userId, DateTime startDate, DateTime endDate)
         {
-            if (startDate > endDate)
+            if (startDate >= endDate)
                 return null;
 
             var room_id = Convert.ToInt32(meetingRoomId);

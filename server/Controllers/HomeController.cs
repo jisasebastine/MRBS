@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using youbefit.Models;
-using youbefit.Services;
+using MRBS.Models;
+using MRBS.Services;
 
-namespace youbefit.Controllers
+namespace MRBS.Controllers
 {
     [AllowAnonymous]
     [Route("[controller]")]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace youbefit.Services
+namespace MRBS.Services
 {
     public class EncryptService : IEncryptService
     {

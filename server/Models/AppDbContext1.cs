@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 
-namespace youbefit.Models
+namespace MRBS.Models
 {
     public partial class AppDbContext1 : DbContext
     {

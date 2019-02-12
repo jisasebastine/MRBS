@@ -1,6 +1,6 @@
 using System;
 
-namespace youbefit.Models
+namespace MRBS.Models
 {
     public class ErrorViewModel
     {

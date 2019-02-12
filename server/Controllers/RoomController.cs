@@ -6,11 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using youbefit.Dtos;
-using youbefit.Models;
-using youbefit.Services;
+using MRBS.Dtos;
+using MRBS.Models;
+using MRBS.Services;
 
-namespace youbefit.Controllers
+namespace MRBS.Controllers
 {
     [Route("[controller]")]
     public class RoomController: Controller
@@ -91,7 +91,7 @@ namespace youbefit.Controllers
             var endDate = room.EndDate.ToLocalTime();
             var new_room = _meetingRoomService.BookRoom(room.MeetingRoomId, room.UserId, room.StartDate, room.EndDate);
             if (new_room == null)
-                return StatusCode(StatusCodes.Status409Conflict, new { message = "Room already booked during that time" });
+                return StatusCode(StatusCodes.Status409Conflict, new { message = "Please check/change the time. Or you can try booking a different room." });
             return GetBooking(room);
         }
 

@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using youbefit.Dtos;
-using youbefit.Models;
-using youbefit.Services;
+using MRBS.Dtos;
+using MRBS.Models;
+using MRBS.Services;
 
-namespace youbefit.Controllers
+namespace MRBS.Controllers
 {
     [Route("[controller]")]
     public class UserController : Controller
@@ -40,7 +40,7 @@ namespace youbefit.Controllers
             var new_user = _userService.SignUp(user.Username, _encryptService.hashPassword(user.Password), user.Email);
             if(new_user == null)
             {
-                return StatusCode(StatusCodes.Status409Conflict, new { message = "The username already exists. Please try a different username" , user = new_user});
+                return StatusCode(StatusCodes.Status409Conflict, new { message = "The user already exists. Please Login" , user = new_user});
             }
             return Ok(new { message = "Sign up was successful", user = new_user});
         }

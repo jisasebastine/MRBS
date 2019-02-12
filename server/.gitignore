@@ -1,5 +1,7 @@
 /*.vs
 /*.vscode
 /youbefit.sln
-/bin/Debug
+/bin/Debug 
+#/bin/Release folder is needed for heroku 
 /obj
+

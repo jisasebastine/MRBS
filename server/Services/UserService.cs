@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using youbefit.Models;
+using MRBS.Models;
 
-namespace youbefit.Services
+namespace MRBS.Services
 {
     public class UserService : IUserService
     {
@@ -17,9 +17,9 @@ namespace youbefit.Services
             _appDbContext = appDbContext;
         }
         
-        public User SignUp(string username, string password, string email="")
+        public User SignUp(string username, string password, string email)
         {
-            var user = _appDbContext.User.Where(u => u.Username == username).SingleOrDefault();
+            var user = _appDbContext.User.Where(u => u.Email.ToLower() == email.ToLower()).SingleOrDefault();
             if(user != null)
             {
                 return null;

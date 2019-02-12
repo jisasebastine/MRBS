@@ -12,10 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql.EntityFrameworkCore;
-using youbefit.Models;
-using youbefit.Services;
+using MRBS.Models;
+using MRBS.Services;
 
-namespace youbefit
+namespace MRBS
 {
     public class Startup
     {

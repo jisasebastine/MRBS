@@ -1,4 +1,4 @@
-﻿namespace youbefit.Services
+﻿namespace MRBS.Services
 {
     public interface IEncryptService
     {

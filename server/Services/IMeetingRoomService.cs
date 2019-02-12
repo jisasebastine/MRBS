@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using youbefit.Models;
+using MRBS.Models;
 
-namespace youbefit.Services
+namespace MRBS.Services
 {
     public interface IMeetingRoomService
     {

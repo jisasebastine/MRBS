@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace youbefit.Models
+namespace MRBS.Models
 {
     public partial class Booking
     {
