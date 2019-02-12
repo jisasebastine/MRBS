@@ -1,3 +1,3 @@
-export * from './user.service';
-export * from './room.service';
-export * from './alert.service';
+export * from '__services/user.service';
+export * from '__services/room.service';
+export * from '__services/alert.service';

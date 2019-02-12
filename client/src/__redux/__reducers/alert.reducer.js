@@ -1,4 +1,4 @@
-import { alertConstants, roomConstants, authenticationConstants } from '../__constants';
+import { alertConstants, roomConstants, authenticationConstants } from '__redux/__constants';
 const initialState = {};
 const success = 'alert alert-success';
 const danger = 'alert alert-danger';

@@ -1,13 +1,13 @@
 import React from 'react';
-import { RoomsPage } from './RoomsPage';
+import { RoomsPage } from '__components/HomePage/MeetingRoom/RoomsPage';
 import { connect } from 'react-redux';
-import { bindActionCreators, compose } from 'redux';
+import { compose } from 'redux';
 
-import { EachRoom } from './EachRoom';
-import { Bar } from '../Bar';
+import { EachRoom } from '__components/HomePage/MeetingRoom/EachRoom';
+import { Bar } from '__components/HomePage/Bar';
 
-import '../../../css';
-import { alertService } from '../../../__services';
+import 'css';
+import { alertService } from '__services';
 import requireAuth from '__helpers/requireAuth';
 
 class Youbefit extends React.Component {
@@ -42,7 +42,7 @@ function mapStateToProps(state) {
     };
 }
 
-
+// compose multiple Higher Order Components
 const connectedYoubefit = compose(
         connect(mapStateToProps, alertService),
         requireAuth

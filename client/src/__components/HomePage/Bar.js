@@ -1,6 +1,5 @@
 import React from 'react';
-import '../../css/bar.css';
-import { connect } from 'react-redux';
+import 'css/bar.css';
 
 
 export class Bar extends React.Component {   

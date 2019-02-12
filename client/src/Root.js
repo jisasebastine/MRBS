@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './__helpers/store';
+import store from '__helpers/store';
 
 export default ({children, initialState={}}) => {
     return (

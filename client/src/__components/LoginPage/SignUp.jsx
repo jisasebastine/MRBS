@@ -1,28 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import '../..//css/login.css';
-import { userService } from '../../__services';
+import 'css/login.css';
+import { userService } from '__services';
 
-class SignUp extends React.Component {
-    constructor(props) {
-        super(props);
+class SignUp extends React.Component {    
+    state = {
+        username: '',
+        password: '',
+        email:'',
+        submitted: false
+    };
 
-        // reset login status
-
-        this.state = {
-            username: '',
-            password: '',
-            email:'',
-            submitted: false
-        };
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault(); 
         let username = document.getElementsByName('username')[0].value;
         let password = document.getElementsByName('password')[0].value;
@@ -93,8 +84,6 @@ function mapStateToProps(state) {
     };
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({...userService}, dispatch);
-// }
+
 const connectedSignUp = connect(mapStateToProps, userService)(SignUp);
 export { connectedSignUp as SignUp }; 

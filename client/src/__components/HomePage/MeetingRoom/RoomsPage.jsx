@@ -5,29 +5,19 @@ import { bindActionCreators } from 'redux';
 
 // import '../../../css/rooms.css';
 import { BookSlot } from './BookSlot';
-import { roomService, alertService } from '../../../__services';
+import { roomService, alertService } from '__services';
 
 class RoomsPage extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            addroom: 'hidden',
-            rooms: []
-        }
-
-        this.addRoom = this.addRoom.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.loadEachRoom = this.loadEachRoom.bind(this);
-        this.checkAvailability = this.checkAvailability.bind(this);
-        this.componentWillMount = this.componentWillMount.bind(this);
-    }
-
-    componentWillMount() {
+    state = {
+        addroom: 'hidden',
+        rooms: []
+    };
+    
+    componentWillMount = () =>{
         this.props.GetAllRooms();
     }
 
-    handleClick() {
+    handleClick = () =>{
         if(this.state.addroom === 'hidden')
         {
             this.setState({
@@ -39,16 +29,16 @@ class RoomsPage extends React.Component {
         }
     }
 
-    addRoom() {
+    addRoom = () =>{
         let roomName = document.getElementsByName('roomname')[0].value;
         this.props.AddRoom(roomName);
     }
 
-    checkAvailability() {    
+    checkAvailability = () =>{    
         this.props.CheckAvailability(this.props.room.startTime, this.props.room.endTime);
     }
 
-    loadEachRoom(index, meetingRoomId, e) {
+    loadEachRoom = (index, meetingRoomId, e) =>{
         // loads the component EachRoom
         console.log(index, meetingRoomId);
         this.props.GoToRoom(meetingRoomId);
@@ -101,8 +91,6 @@ function mapStateToProps(state) {
         alert
     };
 }
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...roomService, ...alertService}, dispatch);
-}
-const connectedRoomsPage = connect(mapStateToProps, mapDispatchToProps)(RoomsPage);
+
+const connectedRoomsPage = connect(mapStateToProps, {...roomService, ...alertService})(RoomsPage);
 export { connectedRoomsPage as RoomsPage }; 

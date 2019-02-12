@@ -5,14 +5,9 @@ import { createBrowserHistory } from 'history';
 import { history } from './__helpers';
 import './css/App.css';
 import { PrivateRoute } from './__helpers';
-import { LoginPage } from './__components//LoginPage';
-import { HomePage } from './__components/HomePage';
-import { SendResetEmail } from './__components/LoginPage/SendResetEmail';
-import { SignUp } from './__components//LoginPage/SignUp';
-import { RoomsPage } from './__components/HomePage/MeetingRoom/RoomsPage'; 
-import { EachRoom } from './__components/HomePage/MeetingRoom/EachRoom'; 
-import { Youbefit } from './__components/HomePage/MeetingRoom/Youbefit';
-import { Bar } from './__components/HomePage/Bar';
+import { LoginPage } from '__components//LoginPage';
+import { SignUp } from '__components//LoginPage/SignUp';
+import { Youbefit } from '__components/HomePage/MeetingRoom/Youbefit';
 
 class App extends Component {
   render() {

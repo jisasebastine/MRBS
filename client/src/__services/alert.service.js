@@ -1,4 +1,4 @@
-import { alertConstants } from "../__redux/__constants";
+import { alertConstants } from "__redux/__constants";
 
 export const alertService = {
     LoadEachRoom,

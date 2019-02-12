@@ -1,11 +1,10 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import '../../css/google.css';
-import * as googleLogo from '../../css/svg/google_logo.svg';
-import { userService } from '../../__services';
+import 'css/google.css';
+import * as googleLogo from 'css/svg/google_logo.svg';
+import { userService } from '__services';
 
 class GoogleLoginPage extends React.Component {
     constructor() {
@@ -20,7 +19,6 @@ class GoogleLoginPage extends React.Component {
             console.log("check history: ", this.props);
             this.props.history.push('/');
         });
-        // this.props.Login(user);
     }
     
 
@@ -49,8 +47,7 @@ function mapStateToProps(state) {
         authentication
     };
 }
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({...userService}, dispatch);
-// }
+
+
 const connectedGoogleLoginPage = connect(mapStateToProps, userService)(GoogleLoginPage);
 export { connectedGoogleLoginPage as GoogleLoginPage }; 

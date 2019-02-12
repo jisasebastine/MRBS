@@ -1,22 +1,16 @@
 import React from 'react';
-// import Calendar from 'react-calendar';
 import DateTimePicker from 'react-datetime-picker';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { roomService } from '../../../__services';
+import { roomService } from '__services/room.service';
 
 class BookSlot extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            endTime: new Date(),
-            startTime: new Date(),
-          }
-        this.recordStartTime = this.recordStartTime.bind(this);
-        this.recordEndTime = this.recordEndTime.bind(this);
-    }
-    componentWillMount() {    
+    state = {
+        endTime: new Date(),
+        startTime: new Date(),
+    };
+
+    componentWillMount = () =>{    
         if(this.props.room.startTime !== undefined && this.props.room.endTime !== undefined){
             // console.log("Redux store has startTime and endTime");
             this.setState({
@@ -33,7 +27,7 @@ class BookSlot extends React.Component {
             this.recordEndTime(date_val);
         }
     }
-    recordStartTime(date){        
+    recordStartTime = (date) =>{        
         this.setState({...this.state, startTime: date});
         if(this.state.endTime < date) {
             this.setState({
@@ -48,7 +42,7 @@ class BookSlot extends React.Component {
         }
     }
 
-    recordEndTime(date){
+    recordEndTime = (date) =>{
         this.setState({ 
             ...this.state,
             endTime: date });
@@ -88,8 +82,6 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...roomService}, dispatch);
-}
-const connectedBookSlot = connect(mapStateToProps, mapDispatchToProps) (BookSlot);
+
+const connectedBookSlot = connect(mapStateToProps, roomService) (BookSlot);
 export { connectedBookSlot as BookSlot };

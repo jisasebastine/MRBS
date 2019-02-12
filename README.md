@@ -1,4 +1,4 @@
-# MRBS (earlier named as youbeit)
+# MRBS (earlier named as youbefit)
 
 MRBS is an app hosted on heroku as https://youbefit.herokuapp.com. 
 

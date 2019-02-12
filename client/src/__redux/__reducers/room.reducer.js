@@ -1,4 +1,4 @@
-import { roomConstants } from '../__constants';
+import { roomConstants } from '__redux/__constants';
 const initialState = {
     "rooms": []
 };

@@ -1,7 +1,7 @@
 import Axios from 'axios';
-import { api_url } from '../__config';
-import { authenticationConstants, alertConstants } from '../__redux/__constants';
-import { alertService } from '.';
+import { api_url } from '__config';
+import { authenticationConstants, alertConstants } from '__redux/__constants';
+import { alertService } from '__services/alert.service';
 
 export const userService = {
     Login,

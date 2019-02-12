@@ -1,45 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Button } from 'react-bootstrap';
 
-import '../../../css/booking.css';
-import { roomService } from '../../../__services';
-import { BookSlot } from './BookSlot';
-import { Time } from './Time';
+import 'css/booking.css';
+import { roomService } from '__services/room.service';
+import { BookSlot } from '__components/HomePage/MeetingRoom/BookSlot';
+import { Time } from '__components/HomePage/MeetingRoom/Time';
 
 class EachRoom extends React.Component {
-    constructor() {
-        super();
-        
-        // this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
-        // this.componentDidUpdate = this.componentDidUpdate.bind(this);
-        this.bookRoom = this.bookRoom.bind(this);
-        this.cancelBooking = this.cancelBooking.bind(this);
-    }
-
-    // componentWillReceiveProps(prevProps) {
-    //     if(this.props.room.selected_room !== undefined) {
-    //         const id = this.props.room.selected_room.meetingRoomId;
-    //         if(prevProps.room.selected_room.meetingRoomId !== id) { 
-    //             this.props.GetBooking(id);
-    //         }           
-    //     }
-    // }
-
-    // componentDidUpdate(prevProps) { 
-        // setTimeout(() => {            
-        //     console.log("PrevProps: ", prevProps);
-        // }, 1000);
-        // if(this.props.room.bookings !== prevProps.room.bookings) {
-        //     const id = this.props.room.selected_room.meetingRoomId;
-        //     setTimeout(() => {            
-        //         this.props.GetBooking(id);
-        //     }, 1000);
-        // }
-    // }
-
-    bookRoom() {                  
+    bookRoom = () =>{                  
         const user = JSON.parse(localStorage.getItem('user'));
         const room = this.props.room.selected_room;
         // this.props.BookRoomExtension(11, 12, this.props.room.startTime, this.props.room.endTime);
@@ -47,7 +16,7 @@ class EachRoom extends React.Component {
         this.props.BookRoom(room.meetingRoomId, user.userid, this.props.room.startTime, this.props.room.endTime);
     }
 
-    cancelBooking(index, e) {
+    cancelBooking = (index, e) =>{
         const booking = this.props.room.bookings[index];
         const room = this.props.room.selected_room;
         const user = JSON.parse(localStorage.getItem('user'));
@@ -118,8 +87,5 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...roomService}, dispatch);
-}
-const connectedEachRoom = connect(mapStateToProps, mapDispatchToProps) (EachRoom);
+const connectedEachRoom = connect(mapStateToProps, roomService) (EachRoom);
 export { connectedEachRoom as EachRoom };

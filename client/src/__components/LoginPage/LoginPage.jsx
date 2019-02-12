@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import '../../css/login.css';
-import { GoogleLoginPage } from './GoogleLoginPage';
-import { userService } from '../../__services';
+import 'css/login.css';
+import { GoogleLoginPage } from '__components/LoginPage/GoogleLoginPage';
+import { userService } from '__services';
 
 
 class LoginPage extends React.Component {
@@ -94,8 +93,7 @@ function mapStateToProps(state) {
         authentication
     };
 }
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({...userService}, dispatch);
-// }
+
+
 const connectedLoginPage = connect(mapStateToProps, userService)(LoginPage);
 export { connectedLoginPage as LoginPage }; 

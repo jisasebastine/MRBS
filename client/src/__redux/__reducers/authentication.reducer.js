@@ -1,4 +1,4 @@
-import { authenticationConstants } from '../__constants';
+import { authenticationConstants } from '__redux/__constants';
 const initialState = {};
 
 export function authentication(state = initialState, action) {

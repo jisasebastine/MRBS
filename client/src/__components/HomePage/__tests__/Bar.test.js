@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow, mount} from 'enzyme';
 import Root from 'Root';
-import { Bar } from '../Bar';
+import { Bar } from '__components/HomePage/Bar';
 
 describe('navbar', () => {
     let wrapped;
