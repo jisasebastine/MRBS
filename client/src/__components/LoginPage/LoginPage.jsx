@@ -36,12 +36,16 @@ class LoginPage extends React.Component {
                 username: username,
                 password: password
             };      
-        this.props.Login(credentials);
+        this.props.Login(credentials, (err) => {
+            if(!!!err) {
+                console.log("logged in, redirecting..");
+                this.props.history.push('/');
+            }
+        });
         }
     }
 
     render() {
-        console.log(this.props);
         const { alert } = this.props;
         return (
             <div className='bodyBG'>
@@ -72,10 +76,10 @@ class LoginPage extends React.Component {
                             </div>                               
                         </div>                        
                     </form>  
-                            <div>
+                            <div className='footer'>
                                 <GoogleLoginPage />
+                                <Link to="/login/signup" className='abcRioButtonBlue'>Sign Up</Link> 
                             </div>
-                            <Link to="/login/signup" className='otheraction'>Sign Up</Link> 
                     </div>
                     </div>
                 </div>
@@ -90,8 +94,8 @@ function mapStateToProps(state) {
         authentication
     };
 }
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...userService}, dispatch);
-}
-const connectedLoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({...userService}, dispatch);
+// }
+const connectedLoginPage = connect(mapStateToProps, userService)(LoginPage);
 export { connectedLoginPage as LoginPage }; 

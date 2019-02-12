@@ -1,21 +1,17 @@
 import React from 'react';
 import { RoomsPage } from './RoomsPage';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 
 import { EachRoom } from './EachRoom';
 import { Bar } from '../Bar';
 
 import '../../../css';
 import { alertService } from '../../../__services';
+import requireAuth from '__helpers/requireAuth';
 
 class Youbefit extends React.Component {
-    constructor() {
-        super();
-        this.closeDiv = this.closeDiv.bind(this);
-    }
-
-    closeDiv() {
+    closeDiv = () => {
         this.props.LoadEachRoom(false);
     }
 
@@ -23,7 +19,7 @@ class Youbefit extends React.Component {
         return (
         <div>
             <div>
-            <Bar />
+            <Bar {...this.props}/>
             </div>
             <div className='roomtoroom'>
             <div className='leftpanel'><RoomsPage /></div>
@@ -46,9 +42,10 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...alertService}, dispatch);
-}
 
-const connectedYoubefit = connect(mapStateToProps, mapDispatchToProps)(Youbefit);
+const connectedYoubefit = compose(
+        connect(mapStateToProps, alertService),
+        requireAuth
+    )(Youbefit);
+
 export { connectedYoubefit as Youbefit }; 

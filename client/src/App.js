@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 import { history } from './__helpers';
 import './css/App.css';
@@ -17,17 +18,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router history={history}>
+        <BrowserRouter>
           <div>                
-              {/* <Route exact path="/login/sendresetemail" component={ SendResetEmail } />      */}
               <Route exact path="/login/signup" component={ SignUp } />        
               <Route exact path="/login" component={ LoginPage } />    
-              <PrivateRoute exact path="/" component={ Youbefit } /> 
-              {/* <PrivateRoute exact path="/rooms" component={ RoomsPage } />    
-              <PrivateRoute exact path="/rooms/room" component={ EachRoom } />  
-              <PrivateRoute exact path="/youbefit" component={ Youbefit } />      */}
+              <Route exact path="/" component={ Youbefit } /> 
           </div>
-        </Router>
+        </BrowserRouter>
       </div>
     );
   }

@@ -16,8 +16,11 @@ class GoogleLoginPage extends React.Component {
 
     responseGoogle(response) {
         let user = {'password': response.profileObj.googleId, 'username': response.profileObj.name, 'email': response.profileObj.email};
-        this.props.SignUp(user);
-        this.props.Login(user);
+        this.props.SignUp(user, () => { 
+            console.log("check history: ", this.props);
+            this.props.history.push('/');
+        });
+        // this.props.Login(user);
     }
     
 
@@ -46,8 +49,8 @@ function mapStateToProps(state) {
         authentication
     };
 }
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...userService}, dispatch);
-}
-const connectedGoogleLoginPage = connect(mapStateToProps, mapDispatchToProps)(GoogleLoginPage);
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({...userService}, dispatch);
+// }
+const connectedGoogleLoginPage = connect(mapStateToProps, userService)(GoogleLoginPage);
 export { connectedGoogleLoginPage as GoogleLoginPage }; 

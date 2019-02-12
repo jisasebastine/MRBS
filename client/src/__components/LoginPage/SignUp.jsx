@@ -27,7 +27,7 @@ class SignUp extends React.Component {
         let username = document.getElementsByName('username')[0].value;
         let password = document.getElementsByName('password')[0].value;
         let email = document.getElementsByName('email')[0].value;
-        if(username !== '' && password !== '') {
+        if(username !== '' && password !== '' && email !== '') {
             //sign up the user
             this.setState({            
                 submitted: true,
@@ -39,7 +39,10 @@ class SignUp extends React.Component {
                 password: password,
                 email: email
             };
-            this.props.SignUp(credentials);
+            this.props.SignUp(credentials, () => {
+                console.log('callback called');
+                this.props.history.push('/');
+            });
         }
     }
 
@@ -89,8 +92,9 @@ function mapStateToProps(state) {
         alert
     };
 }
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({...userService}, dispatch);
-}
-const connectedSignUp = connect(mapStateToProps, mapDispatchToProps)(SignUp);
+
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({...userService}, dispatch);
+// }
+const connectedSignUp = connect(mapStateToProps, userService)(SignUp);
 export { connectedSignUp as SignUp }; 

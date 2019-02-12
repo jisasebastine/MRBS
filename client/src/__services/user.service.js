@@ -42,7 +42,7 @@ function success(message) { return { type: authenticationConstants.SIGNUP_SUCCES
 
 }
 
-function Login(user) {
+function Login(user, callback) {
     let login_url = api_url+"user/login";
     let config = {
         headers: {
@@ -59,14 +59,13 @@ function Login(user) {
         Axios.post(login_url, data, config)
             .then(
                 response => {
-                    console.log("login success: ", response.data);
                     dispatch(success(response.data));
                     localStorage.setItem('user', JSON.stringify(response.data));
-                    window.location.href = '/';
+                    callback();
                 },
                 error => {
-                    console.log("login failed ", error.response);
                     dispatch(failure(error.response.data.message));
+                    callback(error.response.data.message);
                 }
             );
     }
@@ -75,7 +74,7 @@ function success(user) { return { type: authenticationConstants.LOGIN_SUCCESS, p
 function failure(error) { return { type: alertConstants.ERROR, payload: error};}
 }
 
-function SignUp(profile) {
+function SignUp(profile, callback) {
     let signup_url = api_url+"user/signup";
     var data = {
         username: profile.username,
@@ -96,11 +95,12 @@ function SignUp(profile) {
                 console.log("signup success: ", response);
                 dispatch(success(response.data.message));
                 localStorage.setItem('user', JSON.stringify(response.data.user));
-                window.location.href = '/';
+                callback();
             },
             error => {
                 console.log("signup failed ", error);
                 dispatch(failure(error.response.data.message));
+                callback();
             }
         );
 }

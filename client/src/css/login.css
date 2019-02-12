@@ -4,8 +4,11 @@
         width: auto;
         min-height: 100vh;
         padding: 3%;
-        background-size: cover;
-        background-image: url('./svg/youbefitlogo.svg');   
+        background-size: auto;
+        background-position-x: 150%;
+        background-position-y: 50%;
+        background-repeat: no-repeat;
+        background-image: url('./svg/cbexj-romci.svg');   
         font-family: "Gotham SSm 4r",Calibri,Candara,"Helvetica Neue",Arial,Helvetica,sans-serif;
         font-size: 14px;
         color:#404041;
@@ -41,5 +44,10 @@ button {
 .otheraction{
     color:#97f09f;
     background-color: rgb(0, 0, 0);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
 }
 

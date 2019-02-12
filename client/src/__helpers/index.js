@@ -1,3 +1,3 @@
 export * from './history';
-export * from './PrivateRoute';
+// export * from './PrivateRoute';
 export * from './store';
