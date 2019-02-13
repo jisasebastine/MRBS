@@ -15,7 +15,7 @@ class GoogleLoginPage extends React.Component {
 
     responseGoogle(response) {
         let user = {'password': response.profileObj.googleId, 'username': response.profileObj.name, 'email': response.profileObj.email};
-        this.props.SignUp(user, () => { 
+        this.props.GoogleSignUp(user, () => { 
             console.log("check history: ", this.props);
             this.props.history.push('/');
         });

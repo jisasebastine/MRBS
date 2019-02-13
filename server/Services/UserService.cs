@@ -17,6 +17,12 @@ namespace MRBS.Services
             _appDbContext = appDbContext;
         }
         
+        public User ValidateSignup(string username, string password, string email)
+        {
+            return _appDbContext.User.Where(u => u.Email.ToLower() == email.ToLower()).SingleOrDefault();
+            
+        }
+
         public User SignUp(string username, string password, string email)
         {
             var user = _appDbContext.User.Where(u => u.Email.ToLower() == email.ToLower()).SingleOrDefault();

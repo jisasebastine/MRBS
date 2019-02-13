@@ -3,12 +3,6 @@
     .bodyBG {
         width: auto;
         min-height: 100vh;
-        padding: 3%;
-        background-size: auto;
-        background-position-x: 150%;
-        background-position-y: 50%;
-        background-repeat: no-repeat;
-        background-image: url('./svg/cbexj-romci.svg');   
         font-family: "Gotham SSm 4r",Calibri,Candara,"Helvetica Neue",Arial,Helvetica,sans-serif;
         font-size: 14px;
         color:#404041;
@@ -49,5 +43,27 @@ button {
 .footer {
     display: flex;
     justify-content: space-between;
+}
+
+.row {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.row .col-sm-4 {
+    padding-left: 3%;
+    padding-top: 3%
+}
+
+.withbg{
+    height: 100%;
+    padding-top: 0%;
+    padding-right: 0%;
+    background-size: cover;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-image: url('./svg/cbexj-romci.svg');   
 }
 

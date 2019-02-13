@@ -37,6 +37,11 @@ namespace MRBS.Controllers
         [HttpPost("signup")]
         public IActionResult SignUp([FromBody] UserDto user)
         {
+            var existing_user = _userService.ValidateSignup(user.Username, _encryptService.hashPassword(user.Password), user.Email);
+            if(existing_user != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, new { message = "The user already exists. Please Login", user = existing_user });
+            }
             var new_user = _userService.SignUp(user.Username, _encryptService.hashPassword(user.Password), user.Email);
             if(new_user == null)
             {

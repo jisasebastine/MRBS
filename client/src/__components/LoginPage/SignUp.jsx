@@ -62,7 +62,7 @@ class SignUp extends React.Component {
                                 }                              
                             </div>
                             <div className="form-group">
-                                <input placeholder="Email (Optional)" type="text" className="form-control" name="email" />                                
+                                <input placeholder="Email" type="text" className="form-control" name="email" />                                
                             </div>
                             <button onClick={this.handleSubmit} className="form-control btn btn-primary active">                                
                                 Sign Up
